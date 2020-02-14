@@ -79,4 +79,23 @@ router.post('/sign-in', async function(req, res, next) {
 
 });
 
+///// route add Bdd
+
+router.post('/addArticleBdd', async function (req, res, next){
+  var user = await userModel.findOne({"token": req.body.token})
+  console.log(user)
+
+  var addArticle = 
+      user.wishlist.push({"id": req.body.id,
+  "name": req.body.title,
+  "description": req.body.desc,
+  "url": req.body.img,
+  "language": req.body.lang
+})
+console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^", addArticle)
+}
+  
+  ///var updateUser = await user.updateOne
+)
+
 module.exports = router;
