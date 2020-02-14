@@ -13,6 +13,16 @@ console.log(props.token)
   const [state,setState]=useState(false)
   const [modalData,setModaldata]=useState({})
   
+  //ajputer wishlist en BDD
+  const addArticleBdd = async (a,b,c,d,e)=>{
+    var response = await fetch('/addArticleBdd',
+    {
+        method: 'POST',
+        headers: {'Content-Type':'application/x-www-form-urlencoded'},
+        body: `id=${a}&title=${b}`
+      });
+
+  }
 
   useEffect(()=>{
     const ArticlesList = async ()=>{
@@ -69,7 +79,8 @@ console.log(isInWishList)
   }
   actions={[
   <Icon onClick={()=>readClick(item.source.name, item.title, item.description,item.urlToImage)} type="read" key="ellipsis2"/>,
-  <Icon type="like" key="heart" style={color} onClick={() =>props.addToWishList(item.source.name, item.title, item.description,item.urlToImage,isInWishList)}/>
+  <Icon type="like" key="heart" style={color} onClick={() =>{props.addToWishList(item.source.name, item.title, item.description,item.urlToImage,isInWishList);
+    addArticleBdd(item.source.name, item.title, item.description,item.urlToImage,item.language)}}/>
   ]}
   >
   <Meta 
