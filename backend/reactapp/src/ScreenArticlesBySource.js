@@ -14,12 +14,12 @@ console.log(props.token)
   const [modalData,setModaldata]=useState({})
   
   //ajputer wishlist en BDD
-  const addArticleBdd = async (a,b,c,d,e)=>{
+  const addArticleBdd = async (a,b,c,d,e,f)=>{
     var response = await fetch('/addArticleBdd',
     {
         method: 'POST',
         headers: {'Content-Type':'application/x-www-form-urlencoded'},
-        body: `id=${a}&title=${b}`
+        body: `id=${a}&title=${b}&desc=${c}&img=${d}&lang=${e}&tpken=${f}`
       });
 
   }
@@ -80,7 +80,7 @@ console.log(isInWishList)
   actions={[
   <Icon onClick={()=>readClick(item.source.name, item.title, item.description,item.urlToImage)} type="read" key="ellipsis2"/>,
   <Icon type="like" key="heart" style={color} onClick={() =>{props.addToWishList(item.source.name, item.title, item.description,item.urlToImage,isInWishList);
-    addArticleBdd(item.source.name, item.title, item.description,item.urlToImage,item.language)}}/>
+    addArticleBdd(item.source.name, item.title, item.description,item.urlToImage,props.lang,props.token)}}/>
   ]}
   >
   <Meta 
@@ -143,8 +143,13 @@ console.log(isInWishList)
 
     function mapStateToProps(state) {
       return { articles: state.articlesWish,
+<<<<<<< HEAD
         token:state.token,
       lang:state.lang }
+=======
+        token:state.token, 
+        lang:state.lang}
+>>>>>>> 232d0857d983e6a5944732e90a6f4ff193084877
     }
     
     
