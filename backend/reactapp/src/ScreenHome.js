@@ -33,7 +33,6 @@ const [messageUp,setMessageUp] = useState("")
         var resp = await response.json();
         setIsLogin(resp.login)
         setMessageUp(resp.message)
-     
         props.addToken(resp.token)
       console.log(resp )
       }
@@ -52,6 +51,7 @@ const [messageUp,setMessageUp] = useState("")
     console.log(response)
     setIsLogin(response.login)
     setMessage(response.message)
+    props.addToken(response.token)
   }
   if(isLogin){
   return ( <Redirect to="/sources" />)

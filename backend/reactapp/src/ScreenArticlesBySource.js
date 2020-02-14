@@ -19,7 +19,7 @@ console.log(props.token)
     {
         method: 'POST',
         headers: {'Content-Type':'application/x-www-form-urlencoded'},
-        body: `id=${a}&title=${b}&desc=${c}&img=${d}&lang=${e}&tpken=${f}`
+        body: `id=${a}&title=${b}&desc=${c}&img=${d}&lang=${e}&token=${f}`
       });
 
   }
@@ -143,13 +143,8 @@ console.log(isInWishList)
 
     function mapStateToProps(state) {
       return { articles: state.articlesWish,
-<<<<<<< HEAD
-        token:state.token,
-      lang:state.lang }
-=======
         token:state.token, 
         lang:state.lang}
->>>>>>> 232d0857d983e6a5944732e90a6f4ff193084877
     }
     
     

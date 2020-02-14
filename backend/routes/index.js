@@ -69,7 +69,8 @@ router.post('/sign-in', async function(req, res, next) {
     if (hash === userSearch.pwd) {
      message="ok"
     login =true
-    res.json({message,login,token:userSearch.token});
+    console.log("remi in :", userSearch)
+    res.json({message,login,"token":userSearch.token});
    }else{
   console.log("sign-in else final");
    message="Le mot de passe est faux";
@@ -84,19 +85,21 @@ router.post('/sign-in', async function(req, res, next) {
 
 router.post('/addArticleBdd', async function (req, res, next){
   var user = await userModel.findOne({"token": req.body.token})
-  console.log(user)
+  console.log("USER", user, req.body)
 
-  var addArticle = 
-      user.wishlist.push({"id": req.body.id,
+  var addArticle =  user.wishList.push({
+    "id": req.body.id,
   "name": req.body.title,
   "description": req.body.desc,
   "url": req.body.img,
   "language": req.body.lang
 })
-console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^", addArticle)
-}
-  
-  ///var updateUser = await user.updateOne
-)
+
+await user.save()
+
+
+console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^", addArticle);
+
+})
 
 module.exports = router;
