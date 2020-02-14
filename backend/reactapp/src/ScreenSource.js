@@ -12,7 +12,7 @@ function ScreenSource(props) {
   const [newsList, setNewsList] = useState([])
   const [idSource, setIdSource] = useState('')
   const [country,setCountry] = useState(props.lang)
-
+  const[styleFlag,setStyleFlag]=useState("none")
 
 
 //Initialisation de l'app
@@ -37,6 +37,9 @@ useEffect(()=>{
 const changeLang = (lang) =>{
   setCountry(lang)
   props.country(lang)
+  if(lang=="fr"){
+
+  }
 }
 
 var clickSource = (id) =>{
@@ -51,7 +54,7 @@ console.log("id source au click",idSource)
        
        <div className="Banner">
           <div className="flag">
-            <img src="../images/france-flag-round-icon-32.png" width="32px" style={{marginLeft:"5px", cursor : "pointer"}} onClick={()=>changeLang("fr")}/>
+            <img src="../images/france-flag-round-icon-32.png" width="32px" style={{marginLeft:"5px", cursor : "pointer", outlineStyle: {styleFlag}}} onClick={()=>changeLang("fr")}/>
             <img src="../images/united-kingdom-flag-round-icon-32.png"  style={{marginLeft:"5px", cursor : "pointer"}} onClick={()=>changeLang("us")} width="32px"/>
           </div>
          </div>
