@@ -14,7 +14,7 @@ var userSchema = mongoose.Schema({
     pwd:String,
     salt:String,
     token:String,
-    wishList: wishlistSchema
+    wishList: [wishlistSchema]
 });
 
 //article

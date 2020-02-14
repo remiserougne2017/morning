@@ -12,7 +12,8 @@ function ScreenSource(props) {
   const [newsList, setNewsList] = useState([])
   const [idSource, setIdSource] = useState('')
   const [country,setCountry] = useState(props.lang)
-  const[styleFlag,setStyleFlag]=useState("none")
+  const[styleFlagFr,setStyleFlagFr]=useState("fr")
+  const[styleFlagUs,setStyleFlagUs]=useState("none")
 
 
 //Initialisation de l'app
@@ -38,7 +39,11 @@ const changeLang = (lang) =>{
   setCountry(lang)
   props.country(lang)
   if(lang=="fr"){
-
+setStyleFlagFr("dotted")
+setStyleFlagUs("none")
+  }else{
+    setStyleFlagUs("dotted")
+    setStyleFlagFr("none")
   }
 }
 
@@ -46,7 +51,7 @@ var clickSource = (id) =>{
     setIdSource(id)
    return ( <ArticleBySource idSource={id} />)
 }   
-console.log("id source au click",idSource)
+console.log("id source au click",idSource,"flag",)
 
   return (
     <div>
@@ -54,8 +59,8 @@ console.log("id source au click",idSource)
        
        <div className="Banner">
           <div className="flag">
-            <img src="../images/france-flag-round-icon-32.png" width="32px" style={{marginLeft:"5px", cursor : "pointer", outlineStyle: {styleFlag}}} onClick={()=>changeLang("fr")}/>
-            <img src="../images/united-kingdom-flag-round-icon-32.png"  style={{marginLeft:"5px", cursor : "pointer"}} onClick={()=>changeLang("us")} width="32px"/>
+            <img src="../images/france-flag-round-icon-32.png" width="32px" style={{marginLeft:"5px", cursor : "pointer", outlineStyle: styleFlagFr}} onClick={()=>changeLang("fr")}/>
+            <img src="../images/united-kingdom-flag-round-icon-32.png"  style={{marginLeft:"5px", cursor : "pointer",outlineStyle: styleFlagUs}} onClick={()=>changeLang("us")} width="32px"/>
           </div>
          </div>
         
@@ -95,7 +100,6 @@ function mapDispatchToProps(dispatch)   {
      }
     }
   }
-
 
 function mapStateToProps(state) {
   return { articles: state.articlesWish,

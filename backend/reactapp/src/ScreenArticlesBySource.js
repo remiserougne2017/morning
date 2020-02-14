@@ -143,7 +143,8 @@ console.log(isInWishList)
 
     function mapStateToProps(state) {
       return { articles: state.articlesWish,
-        token:state.token }
+        token:state.token,
+      lang:state.lang }
     }
     
     

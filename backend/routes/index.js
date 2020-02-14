@@ -5,7 +5,8 @@ var SHA256 = require("crypto-js/sha256");
 var encBase64 = require("crypto-js/enc-base64");
 var uid2 = require("uid2");
 
-
+//POST ajout articlle BDD
+router.Pos
 
 
 /* POST signUP home page. */
