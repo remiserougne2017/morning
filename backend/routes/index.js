@@ -97,6 +97,21 @@ router.post('/addArticleBdd', async function (req, res, next){
 
 await user.save()
 
+///// route delete Bdd
+
+router.delete('/deleteArticleBdd/:truc/:bidule', async function (req, res, next){
+  console.log("^^^^^^^^^^delete^^^^^^^^^^^^^^^^^^^^^^^^",req.body)
+  /* var user = await userModel.findOne({"token": req.body.token})
+  console.log("USER", user, req.body)
+
+  var deleteArticle =  user.wishList.slice(req.query.position, 1 */
+    
+
+
+await user.save()
+
+
+
 
 console.log("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^", addArticle);
 

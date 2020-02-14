@@ -8,6 +8,16 @@ const { Meta } = Card;
 
 function ScreenMyArticles(props) {
 
+  //ajputer wishlist en BDD
+  const deleteArticleBdd = async (tok, title) => {
+    var response = await fetch(`/deleteArticleBdd/${tok}/${title}`,
+    {
+        method: 'DELETE',
+      //  headers: {'Content-Type':'application/x-www-form-urlencoded'},
+       // body: `id=${a}&title=${b}&desc=${c}&img=${d}&lang=${e}&token=${f}`
+      });
+
+  }
 
 var TrueArticles = props.articles.map((FakeArticles,i)=>{
   return (
@@ -28,7 +38,8 @@ var TrueArticles = props.articles.map((FakeArticles,i)=>{
     
     actions={[
       <Icon type="read" key="ellipsis2" />,
-        <Icon type="delete" key="ellipsis" onClick={()=>props.DeleteFromWishList(FakeArticles.title)} />
+        <Icon type="delete" key="ellipsis" onClick={()=>{props.DeleteFromWishList(FakeArticles.title);
+          deleteArticleBdd(props.token, FakeArticles.title)}}/>
     ]}
     >
       
